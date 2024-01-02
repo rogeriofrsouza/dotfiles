@@ -81,6 +81,7 @@ plugins=(
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
+  asdf
 )
 
 # The compinit command dumps to this new location
@@ -116,4 +117,10 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Alias for dotfiles
 alias config='/usr/bin/git --git-dir=/home/rogeriofrsouza/.dotfiles/ --work-tree=/home/rogeriofrsouza'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
