@@ -1,0 +1,260 @@
+" vim settings
+set scrolloff=5
+set history=1000
+set notimeout
+set timeoutlen=5000
+
+" status bar
+set showmode
+
+" leader
+map <space> <nop>
+let mapleader=" "
+
+" find and replace
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set gdefault
+nmap <leader>nh :noh<CR>
+
+" ideavim settings
+set ideajoin
+set ideamarks
+set idearefactormode=normal
+set ideastatusicon=gray
+
+" which-key
+set which-key
+let g:WhichKey_FontSize = 16
+"let g:WhichKey_CommandColor = "#41ead4"
+"let g:WhichKey_PrefixColor = "#f335b2"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKeyDesc_leader = "<leader> Leader key"
+let g:WhichKey_DefaultDelay = 200
+
+" better HJKL
+map H ^
+map L $
+map J }
+map K {
+
+" better escape
+imap jk <Esc>
+
+" location
+nmap <C-i> <Action>(Back)
+nmap <C-o> <Action>(Forward)
+
+" buffer (buffer < window < tab)
+let g:WhichKeyDesc_windows = "<leader>b +Buffer"
+nmap <leader>ba <Action>(CloseAllEditors)
+nmap <leader>bo <Action>(CloseAllEditorsButActive)
+nmap <leader>bu <Action>(CloseAllUnpinnedEditors)
+nmap <leader>bx <Action>(CloseContent)
+
+" tab
+let g:WhichKeyDesc_windows = "<leader>t +Tabs"
+nmap <C-Tab> <Action>(PreviousTab)
+nmap <Tab> <Action>(NextTab)
+
+nmap <leader>tp <Action>(PinActiveEditorTab)
+map <leader>th <Action>(MoveTabLeft)
+map <leader>tj <Action>(MoveTabDown)
+map <leader>tk <Action>(MoveTabUp)
+map <leader>tl <Action>(MoveTabRight)
+
+" Window
+map <leader>\ <Action>(SplitHorizontally)
+map <leader>- <Action>(SplitVertically)
+
+nmap <C-p> <Action>(JumpToLastWindow)
+nmap <M-i> <Action>(PrevSplitter)
+nmap <M-o> <Action>(NextSplitter)
+nmap <C-k> <C-w>k
+nmap <C-j> <C-w>j
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+
+let g:WhichKeyDesc_windows = "<leader>w +Windows"
+nmap <leader>ww <Action>(HideAllWindows)
+nmap <leader>wk <Action>(StretchSplitToTop)
+nmap <leader>wj <Action>(StretchSplitToBottom)
+nmap <leader>wh <Action>(StretchSplitToLeft)
+nmap <leader>wl <Action>(StretchSplitToRight)
+nmap <leader>wm <Action>(MaximizeEditorInSplit)
+nmap <leader>wu <Action>(UnsplitAll)
+
+" menu
+let g:WhichKeyDesc_windows = "<leader>m +Menu"
+nmap <leader>mm <Action>(MainMenu)
+nmap <leader>ma <Action>(AnalyzeMenu)
+nmap <leader>mb <Action>(BuildMenu)
+nmap <leader>mc <Action>(CodeMenu)
+nmap <leader>mf <Action>(FindMenuGroup)
+nmap <leader>mg <Action>(GoToMenu)
+nmap <leader>ms <Action>(ScopeViewPopupMenu)
+nmap <leader>mt <Action>(EditorTabPopupMenu)
+nmap <leader>mw <Action>(ToolWindowsGroup)
+
+" file
+let g:WhichKeyDesc_windows = "<leader>f +File"
+nmap <leader>fc <Action>(CopyAbsolutePath)
+nmap <leader>fi <Action>(SelectIn)
+nmap <leader>fl <Action>(RecentLocations)
+nmap <leader>fm <Action>(ManageRecentProjects)
+nmap <leader>fo <Action>(OpenFile)
+nmap <leader>fp <Action>(FindInPath)
+nmap <leader>fr <Action>(RecentFiles)
+nmap <leader>fR <Action>(ReplaceInPath)
+
+" action
+let g:WhichKeyDesc_windows = "<leader>a +Actions"
+nmap <leader>ad <Action>(QuickDefinition)
+nmap <leader>aD <Action>(QuickTypeDefinition)
+nmap <leader>al <Action>(HighlightUsagesInFile)
+nmap <leader>ap <Action>(QuickPreview)
+nmap <leader>as <Action>(FileStructurePopup)
+nmap <leader>au <Action>(FindUsages)
+nmap <leader>aU <Action>(ShowUsages)
+
+" code
+let g:WhichKeyDesc_windows = "<leader>c +Code"
+map <leader>c/ <Action>(CommentByLineComment)
+map <leader>c} <Action>(CommentByBlockComment)
+nmap <leader>ca <Action>(ShowIntentionActions)
+nmap <leader>cb <Action>(BuildMenu)
+nmap <leader>ce <Action>(ShowErrorDescription)
+nmap <leader>cg <Action>(Generate)
+nmap <leader>ci <Action>(InspectCode)
+nmap <leader>cm <Action>(OverrideMethods)
+nmap <leader>cM <Action>(ImplementMethods)
+nmap <leader>co <Action>(SelectAllOccurrences)
+nmap <leader>cr <Action>(ReformatCode)
+nmap <leader>ct <Action>(GoToTest)
+
+" run
+let g:WhichKeyDesc_windows = "<leader>r +Run"
+nmap <leader>rc <Action>(ContextRun)
+nmap <leader>rr <Action>(Rerun)
+nmap <leader>rs <Action>(Stop)
+nmap <leader>rt <Action>(RunTests)
+nmap <leader>rx<Action>(chooseRunConfiguration)
+
+" debug
+let g:WhichKeyDesc_windows = "<leader>d +Debug"
+nmap <leader>db <Action>(ToggleLineBreakpoint)
+nmap <leader>dc <Action>(ContextDebug)
+nmap <leader>de <Action>(EditBreakpoint)
+nmap <leader>dr <Action>(Debug)
+nmap <leader>dv <Action>(ViewBreakpoints)
+
+" refactor
+let g:WhichKeyDesc_windows = "<leader>ca +Code action"
+nmap <leader>cad <Action>(SafeDelete)
+nmap <leader>cao <Action>(OptimizeImports)
+nmap <leader>cap <Action>(Refactorings.QuickListPopupAction)
+nmap <leader>car <Action>(RenameElement)
+nmap <leader>cas <Action>(SurroundWith)
+nmap <leader>cau <Action>(Unwrap)
+
+" hierarchy
+nmap <leader>hc <Action>(CallHierarchy)
+nmap <leader>hm <Action>(MethodHierarchy)
+nmap <leader>ht <Action>(TypeHierarchy)
+
+" collapse
+nmap zz <Action>(ExpandCollapseToggleAction)
+nmap za <Action>(CollapseAllRegions)
+nmap zA <Action>(ExpandAllRegions)
+
+" zen
+nmap <leader>z <Action>(ToggleZenMode)
+
+" []
+nmap [b <Action>(PreviousTab)
+nmap ]b <Action>(NextTab)
+nmap [g <Action>(GotoPreviousError)
+nmap ]g <Action>(GotoNextError)
+nmap [u <Action>(GotoPrevElementUnderCaretUsage)
+nmap ]u <Action>(GotoNextElementUnderCaretUsage)
+nmap [o <Action>(PreviousOccurence)
+nmap ]o <Action>(NextOccurence)
+nmap [m <Action>(MethodUp)
+nmap ]m <Action>(MethodDown)
+nmap [c <Action>(JumpToLastChange)
+nmap ]c <Action>(JumpToNextChange)
+
+" goto
+nmap ga <Action>(GotoAction)
+nmap gc <Action>(GotoClass)
+nmap gf <Action>(GotoFile)
+nmap gs <Action>(GotoSymbol)
+nmap gt <Action>(GoToTest)
+nmap gT <Action>(TextSearchAction)
+nmap go <Action>(GotoSuperMethod)
+nmap gd <Action>(GotoDeclaration)
+nmap gD <Action>(GotoTypeDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gI <Action>(QuickImplementations)
+nmap gn <Action>(ShowNavBar)
+
+" terminal
+let g:WhichKeyDesc_windows = "<leader>t +Tools"
+nmap <leader>tc <Action>(Terminal.OpenInTerminal)
+nmap <leader>to <Action>(ActivateTODOToolWindow)
+nmap <leader>ts <Action>(tasks.goto)
+nmap <leader>tt <Action>(ActivateTerminalToolWindow)
+
+" bookmark
+nmap mm <Action>(ToggleBookmark)
+nmap ms <Action>(ShowBookmarks)
+
+nmap \\jl <Action>(EditorJoinLines)
+nmap \\cg <Action>(Github.Create.Gist)
+nmap \\v <Action>(VimActions)
+
+" git
+nmap <leader>g <Action>(VcsGroups)
+
+" text-object (bundle plugin)
+set vim-paragraph-motion
+set textobj-indent
+set textobj-entire
+set argtextobj
+
+" jump-motion (required idea plugin: IdeaVim-EasyMotion, AceJump)
+set easymotion
+
+" highlight yank (bundle plugin)
+set highlightedyank
+let g:highlightedyank_highlight_duration = "1000"
+let g:highlightedyank_highlight_color = "rgba(57, 197, 187, 155)"
+
+" translation (required idea plugin: Translation)
+nmap \\tt <Action>($ShowTranslationDialogAction)
+nmap \\ts <Action>($TranslateTextComponent)
+nmap \\ti <Action>($InclusiveTranslateAction)
+nmap \\te <Action>($ExclusiveTranslateAction)
+
+" string manipulate (required idea plugin: String Manipulation)
+nmap <leader>ss <Action>(osmedile.intellij.stringmanip.PopupChoiceAction)
+
+" code screenshot (required idea plugin: Code Screenshots)
+nmap \\cs <Action>(one.util.ideaplugin.screenshoter.CopyImageAction)
+
+" bundle plugin
+set surround
+set exchange
+set NERDTree
+
+" replace with register (bundle plugin)
+set ReplaceWithRegister
+
+" continuous shift
+xnoremap < <gv
+xnoremap > >gv
+
+" alias
+nmap <C-a> ggVG"+y
