@@ -4,19 +4,16 @@
 " Begin Vimrc
 set linenumber
 set showcmd
-set showmode
-set number
 set incsearch
 set hlsearch
 set ignorecase
 set smartcase
-set clipboard+=unnamed
-set clipboard+=ideaput
-set idearefactormode=keep
 set visualbell
 set noerrorbells
-set noideadelaymacro
 set notimeout
+set clipboard+=unnamedplus
+set noideadelaymacro
+set idearefactormode=keep
 set ideajoin
 
 " The Leader Key
@@ -40,10 +37,10 @@ nnoremap <silent> zk O<Esc>j
 let g:WhichKeyDesc_zk = "zk"
 
 " Easy move to four directions with control
-inoremap <c-k> <up>
-inoremap <c-j> <down>
-inoremap <c-h> <left>
-inoremap <c-l> <right>
+inoremap <C-k> <up>
+inoremap <C-j> <down>
+inoremap <C-h> <left>
+inoremap <C-l> <right>
 
 " Escaping from insert mode
 inoremap jk <Esc>
@@ -119,15 +116,17 @@ let g:WhichKeyDesc_multiple_M = ",M"
 
 " Plug 'michaeljsmith/vim-indent-object'
 " Plug 'preservim/nerdtree'
+" Plug 'vim-scripts/ReplaceWithRegister'
+" let g:WhichKeyDesc_replace = "gr"
 
 Plug 'machakann/vim-highlightedyank'
-let g:highlightedyank_highlight_duration = "1000"
+let g:highlightedyank_highlight_duration = "700"
 Plug 'tommcdo/vim-exchange'
 let g:WhichKeyDesc_exchange = "cx"
-Plug 'vim-scripts/ReplaceWithRegister'
-let g:WhichKeyDesc_replace = "gr"
+
 set sneak
 let g:WhichKeyDesc_sneak = "s"
+" set quickscope
 
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'dbakker/vim-paragraph-motion'
@@ -148,6 +147,24 @@ nmap gf <Action>(Forward)
 let g:WhichKeyDesc_tdeclaak = "gf"
 
 " Command Picker using <leader>
+let g:WhichKeyDesc_Activate = "<leader>a Activate Tool Window"
+nmap <leader>aa <Action>(ActivateAIAssistantToolWindow)
+let g:WhichKeyDesc_Activate_a = "<leader>aa AI Assistant"
+nmap <leader>ac <Action>(ActivateProjectToolWindow)
+let g:WhichKeyDesc_Activate_p = "<leader>ac Project"
+nmap <leader>as <Action>(ActivateServicesToolWindow)
+let g:WhichKeyDesc_Activate_s = "<leader>as Services"
+nmap <leader>at <Action>(ActivateStructureToolWindow)
+let g:WhichKeyDesc_Activate_t = "<leader>at Structure"
+nmap <leader>ad <Action>(ActivateDatabaseToolWindow)
+let g:WhichKeyDesc_Activate_d = "<leader>ad Database"
+nmap <leader>am <Action>(ActivateMavenToolWindow)
+let g:WhichKeyDesc_Activate_m = "<leader>am Maven"
+nmap <leader>ae <Action>(ActivateEndpointsToolWindow)
+let g:WhichKeyDesc_Activate_e = "<leader>ae Endpoints"
+nmap <leader>ab <Action>(ActivateBeansToolWindow)
+let g:WhichKeyDesc_Activate_b = "<leader>ab Beans"
+
 let g:WhichKeyDesc_Window = "<leader>w Manage Windows"
 nmap <leader>ws <Action>(SplitVertically)
 let g:WhichKeyDesc_Window_Split = "<leader>ws Split Vertically"
@@ -193,24 +210,30 @@ nmap <leader>tp <Action>(ChooseRunConfiguration)
 let g:WhichKeyDesc_Terminal_tp = "<leader>tp Choose Run Configuration"
 
 let g:WhichKeyDesc_Ref = "<leader>r Refactorings"
-nmap <leader>rp <Action>(Refactorings.QuickListPopupAction)
-let g:WhichKeyDesc_Ref_p = "<leader>rp Refactor Popup"
-nmap <Leader>rf <Action>(ReformatCode)
-let g:WhichKeyDesc_Ref_f = "<leader>rf Reformat Code"
+nmap <leader>rt <Action>(Refactorings.QuickListPopupAction)
+let g:WhichKeyDesc_Ref_p = "<leader>rt Refactor This"
 nmap <Leader>rn <Action>(RenameElement)
 let g:WhichKeyDesc_Ref_n = "<leader>rn Rename Element"
-nmap <leader>ra <Action>(ShowIntentionActions)
-let g:WhichKeyDesc_Ref_a = "<leader>ra Intention Actions"
-nmap <leader>rg <Action>(Generate)
-let g:WhichKeyDesc_Ref_g = "<leader>rg Generate"
+
+let g:WhichKeyDesc_Code = "<leader>c Code"
+nmap <Leader>cf <Action>(ReformatCode)
+let g:WhichKeyDesc_Code_f = "<leader>cf Reformat Code"
+nmap <leader>ca <Action>(ShowIntentionActions)
+let g:WhichKeyDesc_Code_a = "<leader>ca Intention Actions"
+nmap <leader>ci <Action>(OptimizeImports)
+let g:WhichKeyDesc_Code_o = "<leader>ci Optimize Imports"
+nmap <leader>cg <Action>(Generate)
+let g:WhichKeyDesc_Code_g = "<leader>cg Generate"
+nmap <leader>cc <Action>(AIAssistant.Editor.CompleteCodeWithAI)
+let g:WhichKeyDesc_Code_cc = "<leader>cc Complete Code With AI"
 
 let g:WhichKeyDesc_Find = "<leader>f Find and Replace"
 nmap <leader>fr <Action>(Replace)
 let g:WhichKeyDesc_Find_rep = "<leader>fr Replace"
-nmap <leader>ff <Action>(SearchEverywhere)
-let g:WhichKeyDesc_Find_find = "<leader>ff Search Everywhere"
-nmap <leader>fp <Action>(FindInPath)
-let g:WhichKeyDesc_Find_findp = "<leader>fp Find in Path"
+nmap <leader>fs <Action>(SearchEverywhere)
+let g:WhichKeyDesc_Find_search = "<leader>fs Search Everywhere"
+nmap <leader>ff <Action>(FindInPath)
+let g:WhichKeyDesc_Find_findp = "<leader>ff Find in Path"
 
 let g:WhichKeyDesc_vim = "<leader>v VIM"
 nmap <leader>vr <Action>(IdeaVim.ReloadVimRc.reload)
@@ -223,8 +246,8 @@ nmap <leader>su <Action>(FindUsages)
 let g:WhichKeyDesc_Show_us = "<leader>su Show Usages"
 nmap <leader>sl <Action>(RecentLocations)
 let g:WhichKeyDesc_Show_lo = "<leader>sl Recent Locations"
-"map <leader>sr <Action>(GotoRelated)
-"let g:WhichKeyDesc_Show_rel = "<leader>sr Goto Related"
+nmap <leader>ss <Action>(FileStructurePopup)
+let g:WhichKeyDesc_Show_struct = "<leader>ss File Structure"
 nmap <leader>sd <Action>(QuickJavaDoc)
 let g:WhichKeyDesc_Show_doc = "<leader>sd Documentation"
 nmap <leader>se <Action>(ShowErrorDescription)
@@ -242,16 +265,6 @@ let g:WhichKeyDesc_Bookmark_t = "<leader>bt Toggle Bookmark"
 nmap <leader>bs <Action>(ShowBookmarks)
 let g:WhichKeyDesc_Bookmark_s = "<leader>bs Show Bookmarks"
 
-let g:WhichKeyDesc_editor = "<leader>e Editor"
-nmap <leader>eh <Action>(EditorScrollLeft)
-let g:WhichKeyDesc_editorh = "<leader>eh Scroll Left"
-nmap <leader>ej <Action>(EditorScrollDown)
-let g:WhichKeyDesc_editorj = "<leader>ej Scroll Down"
-nmap <leader>ek <Action>(EditorScrollUp)
-let g:WhichKeyDesc_editork = "<leader>ek Scroll Up"
-nmap <leader>el <Action>(EditorScrollRight)
-let g:WhichKeyDesc_editorl = "<leader>el Scroll Right"
-
 let g:WhichKeyDesc_Debug = "<leader>d Debug"
 nmap <leader>dc <Action>(ChooseDebugConfiguration)
 let g:WhichKeyDesc_Debug_c = "<leader>dc Choose Debug Configuration"
@@ -265,29 +278,27 @@ nmap <leader>dt <Action>(ToggleLineBreakpoint)
 let g:WhichKeyDesc_Debug_t = "<leader>dt Toggle Line Breakpoint"
 nmap <leader>dv <Action>(ViewBreakpoints)
 let g:WhichKeyDesc_Debug_v = "<leader>dv View Breakpoints"
+nmap <leader>dd <Action>(ActivateDebugToolWindow)
+let g:WhichKeyDesc_Debug_d = "<leader>dd Debug Tool Window"
 
 let g:WhichKeyDesc_Git = "<leader>g Git"
 nmap <leader>ga <Action>(Annotate)
 let g:WhichKeyDesc_Git_a = "<leader>ga Annotate"
 nmap <leader>gb <Action>(Git.Branches)
 let g:WhichKeyDesc_Git_b = "<leader>gb Branches"
-nmap <leader>gc <Action>(Git.ResolveConflicts)
-let g:WhichKeyDesc_Git_c = "<leader>gc Resolve Conflicts"
-nmap <leader>gl <Action>(Vcs.Show.Log)
-let g:WhichKeyDesc_Git_l = "<leader>gl Show Log"
+nmap <leader>gz <Action>(Git.ResolveConflicts)
+let g:WhichKeyDesc_Git_z = "<leader>gz Resolve Conflicts"
+nmap <leader>gf <Action>(Git.Fetch)
+let g:WhichKeyDesc_Git_f = "<leader>gf Fetch"
+nmap <leader>gg <Action>(ActivateVersionControlToolWindow)
+let g:WhichKeyDesc_Git_g = "<leader>gg Git Tool Window"
 nmap <leader>gm <Action>(Git.Merge)
 let g:WhichKeyDesc_Git_m = "<leader>gm Merge"
-nmap <leader>go <Action>(Github.Open.In.Browser)
-let g:WhichKeyDesc_Git_o = "<leader>go Open in Browser"
 nmap <leader>gp <Action>(Git.Pull)
 let g:WhichKeyDesc_Git_p = "<leader>gp Pull"
+nmap <leader>gu <Action>(Vcs.Push)
+let g:WhichKeyDesc_Git_u = "<leader>gu Push"
 nmap <leader>gr <Action>(Git.Rebase)
 let g:WhichKeyDesc_Git_r = "<leader>gr Rebase"
-nmap <leader>gs <Action>(Vcs.Show.Local.Changes)
-let g:WhichKeyDesc_Git_s = "<leader>gs Show Local Changes"
-nmap <leader>gu <Action>(Git.Push)
-let g:WhichKeyDesc_Git_u = "<leader>gu Push"
-nmap <leader>gv <Action>(Compare.LastVersion)
-let g:WhichKeyDesc_Git_v = "<leader>gv Compare Last Version"
-nmap <leader>gw <Action>(ActivateCommitToolWindow)
-let g:WhichKeyDesc_Git_w = "<leader>gw Commit Tool Window"
+nmap <leader>gc <Action>(ActivateCommitToolWindow)
+let g:WhichKeyDesc_Git_c = "<leader>gc Commit Tool Window"
