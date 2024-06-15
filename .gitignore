@@ -1,2 +1,2 @@
-.config/nvim/.repro
-.config/tmux/plugins
+dot_config/nvim/dot_repro
+dot_config/tmux/plugins
