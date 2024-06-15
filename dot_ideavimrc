@@ -1,0 +1,299 @@
+""" https://github.com/JaimeArboleda/jet_brains_settings/blob/main/.ideavimrc
+""" https://github.com/JetBrains/ideavim/discussions/303?sort=new#discussioncomment-7664118
+
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Common settings -------------------------
+set number
+set linenumber
+set relativenumber
+set scrolloff=5
+set showcmd
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+set visualbell
+set noerrorbells
+set notimeout
+set clipboard+=unnamedplus
+
+""" Idea specific settings ------------------
+set ideajoin
+set noideadelaymacro
+set idearefactormode=keep
+
+""" Mappings --------------------------------
+nmap <Esc> :nohlsearch<CR>
+nmap <C-s> :w<CR><Esc>
+
+" Create Blank Newlines and stay in Normal mode
+nnoremap <silent> zj o<Esc>k
+let g:WhichKeyDesc_zj = "zj"
+nnoremap <silent> zk O<Esc>j
+let g:WhichKeyDesc_zk = "zk"
+
+" Easy move to four directions with control in Insert mode
+inoremap <C-k> <up>
+inoremap <C-j> <down>
+inoremap <C-h> <left>
+inoremap <C-l> <right>
+
+" Escaping from insert mode
+inoremap jk <Esc>
+let g:WhichKeyDesc_jk = "jk"
+
+" Maintain visual selection after indenting
+vnoremap < <gv
+vnoremap > >gv
+
+" Window
+nmap [b <Action>(PreviousTab)
+nmap ]b <Action>(NextTab)
+nmap H <Action>(PreviousTab)
+nmap L <Action>(NextTab)
+nmap <C-k> <C-w>k
+nmap <C-j> <C-w>j
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
+
+" R to execute q macro
+nnoremap R @q
+
+" Reselect last-pasted text
+nnoremap gp `[v`]
+let g:WhichKeyDesc_gp = "gp"
+
+" Most useful go to commands use g:
+nmap gE <Action>(GotoPreviousError)
+let g:WhichKeyDesc_errp = "gE"
+nmap ge <Action>(GotoNextError)
+let g:WhichKeyDesc_errn = "ge"
+nmap gd <Action>(GotoDeclaration)
+let g:WhichKeyDesc_decl = "gd"
+nmap gD <Action>(GotoTypeDeclaration)
+let g:WhichKeyDesc_tdecla = "gD"
+nmap gr <Action>(FindUsages)
+let g:WhichKeyDesc_find_usages = "gr"
+nmap gb <Action>(Back)
+let g:WhichKeyDesc_tdeclaa = "gb"
+nmap gf <Action>(Forward)
+let g:WhichKeyDesc_tdeclaak = "gf"
+
+""" Plugins  --------------------------------
+set which-key
+Plug 'tpope/vim-commentary'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+set multiple-cursors
+Plug 'terryma/vim-multiple-cursors'
+Plug 'machakann/vim-highlightedyank'
+Plug 'tommcdo/vim-exchange'
+set sneak
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'dbakker/vim-paragraph-motion'
+Plug 'kana/vim-textobj-entire'
+
+""" Plugin settings -------------------------
+let g:WhichKey_FontSize = 16
+let g:WhichKey_CommandColor = "#bcbec4"
+let g:WhichKey_PrefixColor = "#cf8e6d"
+let g:WhichKey_KeyColor = "2aacb8"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+let g:WhichKeyDesc_leader = "<leader> Leader key"
+let g:WhichKey_DefaultDelay = 200
+let g:WhichKey_ShowVimActions = "true"
+
+let g:WhichKeyDesc_com = "gc"
+
+map , <Plug>(easymotion-prefix)
+let g:WhichKeyDesc_easymotion_leader = ","
+map ,f <Plug>(easymotion-bd-f)
+let g:WhichKeyDesc_easymotion_f = ",f"
+map ,t <Plug>(easymotion-bd-t)
+let g:WhichKeyDesc_easymotion_t = ",t"
+map ,w <Plug>(easymotion-bd-w)
+let g:WhichKeyDesc_easymotion_w = ",w"
+map ,W <Plug>(easymotion-bd-W)
+let g:WhichKeyDesc_easymotion_W = ",W"
+map ,e <Plug>(easymotion-bd-e)
+let g:WhichKeyDesc_easymotion_e = ",e"
+map ,E <Plug>(easymotion-bd-E)
+let g:WhichKeyDesc_easymotion_E = ",E"
+map ,l <Plug>(easymotion-bd-jk)
+let g:WhichKeyDesc_easymotion_l = ",l"
+map ,s <Plug>(easymotion-bd-f2)
+let g:WhichKeyDesc_easymotion_s = ",s"
+map ,S <Plug>(easymotion-bd-t2)
+let g:WhichKeyDesc_easymotion_S = ",S"
+
+let g:WhichKeyDesc_surround_ys = "ys"
+let g:WhichKeyDesc_surround_ds = "ds"
+let g:WhichKeyDesc_surround_cs = "cs"
+
+let g:WhichKeyDesc_mult = "g<A-n>"
+map ,m <Plug>NextWholeOccurrence
+let g:WhichKeyDesc_multiple_m = ",m"
+map ,M <Plug>SkipOccurrence
+let g:WhichKeyDesc_multiple_M = ",M"
+
+let g:highlightedyank_highlight_duration = "700"
+
+let g:WhichKeyDesc_exchange = "cx"
+
+let g:WhichKeyDesc_sneak = "s"
+
+""" Command Picker using <leader> -------------------------
+nmap <leader>e <Action>(ActivateProjectToolWindow)
+let g:WhichKeyDesc_Explorer = "<leader>e Explorer"
+
+nmap <leader>q <Action>(CloseContent)
+let g:WhichKeyDesc_Close = "<leader>q Close"
+
+nmap <leader>/ <Action>(FindInPath)
+let g:WhichKeyDesc_Find_Path = "<leader>/ Find in Path"
+
+let g:WhichKeyDesc_Activate = "<leader>a Activate Tool Window"
+nmap <leader>aa <Action>(ActivateAIAssistantToolWindow)
+let g:WhichKeyDesc_Activate_a = "<leader>aa AI Assistant"
+nmap <leader>as <Action>(ActivateServicesToolWindow)
+let g:WhichKeyDesc_Activate_s = "<leader>as Services"
+nmap <leader>at <Action>(ActivateStructureToolWindow)
+let g:WhichKeyDesc_Activate_t = "<leader>at Structure"
+nmap <leader>ad <Action>(ActivateDatabaseToolWindow)
+let g:WhichKeyDesc_Activate_d = "<leader>ad Database"
+nmap <leader>am <Action>(ActivateMavenToolWindow)
+let g:WhichKeyDesc_Activate_m = "<leader>am Maven"
+nmap <leader>ae <Action>(ActivateEndpointsToolWindow)
+let g:WhichKeyDesc_Activate_e = "<leader>ae Endpoints"
+nmap <leader>ab <Action>(ActivateBeansToolWindow)
+let g:WhichKeyDesc_Activate_b = "<leader>ab Beans"
+nmap <leader>au <Action>(MainMenuButton.ShowMenu)
+let g:WhichKeyDesc_Activate_u = "<leader>au Main Menu"
+
+let g:WhichKeyDesc_Window = "<leader>w Manage Windows"
+nmap <leader>ws <Action>(SplitVertically)
+let g:WhichKeyDesc_Window_Split = "<leader>ws Split Vertically"
+nmap <leader>wu <Action>(Unsplit)
+let g:WhichKeyDesc_Window_Unsplit = "<leader>wu Unsplit"
+nmap <leader>wq <Action>(CloseContent)
+let g:WhichKeyDesc_Window_Close = "<leader>wq Close Buffer"
+nmap <leader>wh <Action>(CloseAllToTheLeft)
+let g:WhichKeyDesc_Window_Closeh = "<leader>wh Close All Tabs to left"
+nmap <leader>wl <Action>(CloseAllToTheRight)
+let g:WhichKeyDesc_Window_Closel = "<leader>wl Close All Tabs to right"
+nmap <leader>wx <Action>(CloseAllEditorsButActive)
+let g:WhichKeyDesc_Window_Closex = "<leader>wx Close All Tabs but active"
+nmap <leader>wr <Action>(ReopenClosedTab)
+let g:WhichKeyDesc_Window_Reopen = "<leader>wr Reopen Last Closed Buffer"
+nmap <leader>wc <Action>(HideAllWindows)
+let g:WhichKeyDesc_Window_Hide = "<leader>wc Hide All Windows"
+
+let g:WhichKeyDesc_Terminal_Run = "<leader>t Terminal and Run"
+nmap <leader>to <Action>(Terminal.OpenInTerminal)
+let g:WhichKeyDesc_Terminal_Run_to = "<leader>to Open New Terminal in Path"
+nmap <leader>ts <Action>(RunClass)
+let g:WhichKeyDesc_Terminal_Run_ts = "<leader>ts Run Class"
+nmap <leader>tr <Action>(RerunTests)
+let g:WhichKeyDesc_Terminal_Run_tr = "<leader>tr Run Tests"
+nmap <leader>tf <Action>(RerunFailedTests)
+let g:WhichKeyDesc_Terminal_Run_tf = "<leader>tf Run Failed Tests"
+nmap <leader>tc <Action>(ChooseRunConfiguration)
+let g:WhichKeyDesc_Terminal_Run_tc = "<leader>tc Choose Run Configuration"
+
+let g:WhichKeyDesc_Ref = "<leader>r Refactorings"
+nmap <leader>rt <Action>(Refactorings.QuickListPopupAction)
+let g:WhichKeyDesc_Ref_t = "<leader>rt Refactor This"
+nmap <Leader>rn <Action>(RenameElement)
+let g:WhichKeyDesc_Ref_n = "<leader>rn Rename Element"
+
+let g:WhichKeyDesc_Code = "<leader>c Code"
+nmap <Leader>cf <Action>(ReformatCode)
+let g:WhichKeyDesc_Code_f = "<leader>cf Reformat Code"
+nmap <leader>ca <Action>(ShowIntentionActions)
+let g:WhichKeyDesc_Code_a = "<leader>ca Intention Actions"
+nmap <leader>ci <Action>(OptimizeImports)
+let g:WhichKeyDesc_Code_o = "<leader>ci Optimize Imports"
+nmap <leader>cg <Action>(Generate)
+let g:WhichKeyDesc_Code_g = "<leader>cg Generate"
+nmap <leader>cc <Action>(AIAssistant.Editor.CompleteCodeWithAI)
+let g:WhichKeyDesc_Code_cc = "<leader>cc Complete Code With AI"
+
+let g:WhichKeyDesc_Find = "<leader>f Find and Replace"
+nmap <leader>fr <Action>(Replace)
+let g:WhichKeyDesc_Find_rep = "<leader>fr Replace"
+nmap <leader>ff <Action>(SearchEverywhere)
+let g:WhichKeyDesc_Find_search = "<leader>ff Search Everywhere"
+nmap <leader>ft <Action>(ActivateTerminalToolWindow)
+let g:WhichKeyDesc_Find_terminal = "<leader>ft Open Terminal"
+
+let g:WhichKeyDesc_vim = "<leader>v VIM"
+nmap <leader>vr <Action>(IdeaVim.ReloadVimRc.reload)
+let g:WhichKeyDesc_vim_r = "<leader>vr Reload .ideavimrc"
+nnoremap <leader>ve :e ~/.ideavimrc<CR>
+let g:WhichKeyDesc_vim_e = "<leader>ve Edit .ideavimrc"
+
+let g:WhichKeyDesc_Show = "<leader>s Show"
+nmap <leader>su <Action>(FindUsages)
+let g:WhichKeyDesc_Show_us = "<leader>su Show Usages"
+nmap <leader>sl <Action>(RecentLocations)
+let g:WhichKeyDesc_Show_lo = "<leader>sl Recent Locations"
+nmap <leader>ss <Action>(FileStructurePopup)
+let g:WhichKeyDesc_Show_struct = "<leader>ss File Structure"
+nmap <leader>sd <Action>(QuickJavaDoc)
+let g:WhichKeyDesc_Show_doc = "<leader>sd Documentation"
+nmap <leader>se <Action>(ShowErrorDescription)
+let g:WhichKeyDesc_Show_er = "<leader>se Error Description"
+nmap <leader>sa <Action>(GotoAction)
+let g:WhichKeyDesc_Show_ac = "<leader>sa Actions"
+nmap <leader>sf <Action>(RecentFiles)
+let g:WhichKeyDesc_Show_fi = "<leader>sf Recent Files"
+nmap <leader>sc <Action>(RecentChangedFiles)
+let g:WhichKeyDesc_Show_sc = "<leader>sc Recent Changed Files"
+
+let g:WhichKeyDesc_Bookmark = "<leader>b Bookmarks"
+nmap <leader>bt <Action>(ToggleBookmark)
+let g:WhichKeyDesc_Bookmark_t = "<leader>bt Toggle Bookmark"
+nmap <leader>bs <Action>(ShowBookmarks)
+let g:WhichKeyDesc_Bookmark_s = "<leader>bs Show Bookmarks"
+
+let g:WhichKeyDesc_Debug = "<leader>d Debug"
+nmap <leader>dc <Action>(ChooseDebugConfiguration)
+let g:WhichKeyDesc_Debug_c = "<leader>dc Choose Debug Configuration"
+nmap <leader>dg <Action>(Debug)
+let g:WhichKeyDesc_Debug_g = "<leader>dg Debug"
+nmap <leader>dr <Action>(Debugger.RemoveAllBreakpoints)
+let g:WhichKeyDesc_Debug_r = "<leader>dr Remove All Breakpoints"
+nmap <leader>ds <Action>(Stop)
+let g:WhichKeyDesc_Debug_s = "<leader>ds Stop"
+nmap <leader>db <Action>(ToggleLineBreakpoint)
+let g:WhichKeyDesc_Debug_b = "<leader>db Toggle Line Breakpoint"
+nmap <leader>dv <Action>(ViewBreakpoints)
+let g:WhichKeyDesc_Debug_v = "<leader>dv View Breakpoints"
+nmap <leader>dd <Action>(ActivateDebugToolWindow)
+let g:WhichKeyDesc_Debug_d = "<leader>dd Debug Tool Window"
+
+let g:WhichKeyDesc_Git = "<leader>g Git"
+nmap <leader>ga <Action>(Annotate)
+let g:WhichKeyDesc_Git_a = "<leader>ga Annotate"
+nmap <leader>gb <Action>(Git.Branches)
+let g:WhichKeyDesc_Git_b = "<leader>gb Branches"
+nmap <leader>gz <Action>(Git.ResolveConflicts)
+let g:WhichKeyDesc_Git_z = "<leader>gz Resolve Conflicts"
+nmap <leader>gf <Action>(Git.Fetch)
+let g:WhichKeyDesc_Git_f = "<leader>gf Fetch"
+nmap <leader>gg <Action>(ActivateVersionControlToolWindow)
+let g:WhichKeyDesc_Git_g = "<leader>gg Git Tool Window"
+nmap <leader>gm <Action>(Git.Merge)
+let g:WhichKeyDesc_Git_m = "<leader>gm Merge"
+nmap <leader>gp <Action>(Git.Pull)
+let g:WhichKeyDesc_Git_p = "<leader>gp Pull"
+nmap <leader>gP <Action>(Vcs.Push)
+let g:WhichKeyDesc_Git_P = "<leader>gP Push"
+nmap <leader>gr <Action>(Git.Rebase)
+let g:WhichKeyDesc_Git_r = "<leader>gr Rebase"
+nmap <leader>gc <Action>(ActivateCommitToolWindow)
+let g:WhichKeyDesc_Git_c = "<leader>gc Commit Tool Window"
+nmap <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
+let g:WhichKeyDesc_Git_h = "<leader>gh History"
