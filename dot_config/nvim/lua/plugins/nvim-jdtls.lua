@@ -18,9 +18,10 @@ return {
           completion = {
             importOrder = {
               "java",
-              "javax",
+              "jakarta",
               "com",
               "org",
+              "lombok",
             },
           },
           configuration = {
@@ -42,11 +43,11 @@ return {
             downloadSources = true,
           },
           format = {
-            enabled = true,
-            settings = {
-              url = vim.fn.expand("~/Workspace/eclipse-java-google-style.xml"),
-              profile = "GoogleStyle",
-            },
+            enabled = false,
+            -- settings = {
+            --   url = vim.fn.expand("~/Workspace/eclipse-java-google-style.xml"),
+            --   profile = "GoogleStyle",
+            -- },
           },
           implementationsCodeLens = {
             enabled = true,
