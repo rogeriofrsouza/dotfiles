@@ -1,12 +1,7 @@
 return {
   "mfussenegger/nvim-jdtls",
-  dependencies = { "mfussenegger/nvim-dap" },
   opts = {
     jdtls = function(opts)
-      local install_path = require("mason-registry").get_package("jdtls"):get_install_path()
-      local jvmArg = "-javaagent:" .. install_path .. "/lombok.jar"
-      table.insert(opts.cmd, "--jvm-arg=" .. jvmArg)
-
       opts.settings = {
         java = {
           codeGeneration = {
@@ -16,12 +11,14 @@ return {
             useBlocks = true,
           },
           completion = {
-            importOrder = {
-              "java",
-              "jakarta",
-              "com",
-              "org",
-              "lombok",
+            favoriteStaticMembers = {
+              "org.hamcrest.MatcherAssert.assertThat",
+              "org.hamcrest.Matchers.*",
+              "org.hamcrest.CoreMatchers.*",
+              "org.junit.jupiter.api.Assertions.*",
+              "java.util.Objects.requireNonNull",
+              "java.util.Objects.requireNonNullElse",
+              "org.mockito.Mockito.*",
             },
           },
           configuration = {
@@ -42,6 +39,9 @@ return {
           eclipse = {
             downloadSources = true,
           },
+          foldingRange = {
+            enabled = true,
+          },
           format = {
             enabled = false,
             -- settings = {
@@ -61,7 +61,7 @@ return {
           references = {
             includeDecompiledSources = true,
           },
-          referencesCodeLens = {
+          referenceCodeLens = {
             enabled = true,
           },
           signatureHelp = { enabled = true },
@@ -73,6 +73,22 @@ return {
           },
         },
       }
+
+      -- opts.handlers = {
+      --   ["$/progress"] = function() end, -- disable progress updates.
+      --   ["language/status"] = function() end, -- mute; having progress reports is enough
+      -- }
+
+      local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
+      extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+      opts.init_options.extendedClientCapabilities = extendedClientCapabilities
+
+      opts.capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
+
+      require("ufo").setup()
 
       return opts
     end,
