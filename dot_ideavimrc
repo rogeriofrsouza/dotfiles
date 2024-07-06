@@ -148,9 +148,6 @@ let g:WhichKeyDesc_sneak = "s"
 nmap <leader>e <Action>(ActivateProjectToolWindow)
 let g:WhichKeyDesc_Explorer = "<leader>e Explorer"
 
-nmap <leader>q <Action>(CloseContent)
-let g:WhichKeyDesc_Close = "<leader>q Close"
-
 nmap <leader>/ <Action>(FindInPath)
 let g:WhichKeyDesc_Find_Path = "<leader>/ Find in Path"
 
@@ -257,6 +254,8 @@ nmap <leader>bt <Action>(ToggleBookmark)
 let g:WhichKeyDesc_Bookmark_t = "<leader>bt Toggle Bookmark"
 nmap <leader>bs <Action>(ShowBookmarks)
 let g:WhichKeyDesc_Bookmark_s = "<leader>bs Show Bookmarks"
+nmap <leader>bd <Action>(CloseContent)
+let g:WhichKeyDesc_Buffer_d = "<leader>bd Close"
 
 let g:WhichKeyDesc_Debug = "<leader>d Debug"
 nmap <leader>dc <Action>(ChooseDebugConfiguration)
