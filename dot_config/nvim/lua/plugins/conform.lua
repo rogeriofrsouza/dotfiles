@@ -1,22 +1,19 @@
 return {
   "stevearc/conform.nvim",
-  opts = {
-    formatters_by_ft = {
-      xml = { "lemminx" },
-      java = { "google-java-format" },
-    },
-    formatters = {
-      ["google-java-format"] = {
-        prepend_args = { "--aosp" },
-      },
-      --   xmllint = {
-      --     inherit = false,
-      --     command = "xmllint",
-      --     args = { "--format", "$FILENAME" },
-      --   },
-      --   env = {
-      --     XMLLINT_INDENT = "    ",
-      --   },
-    },
-  },
+  opts = function(_, opts)
+    opts.formatters_by_ft["xml"] = { "lemminx" }
+    opts.formatters_by_ft["java"] = { "google-java-format" }
+
+    opts.formatters["google-java-format"] = {
+      prepend_args = { "--aosp" },
+    }
+
+    -- opts.formatters.xmllint = {
+    --   env = {
+    --     XMLLINT_INDENT = "    ",
+    --   },
+    -- }
+
+    return opts
+  end,
 }
