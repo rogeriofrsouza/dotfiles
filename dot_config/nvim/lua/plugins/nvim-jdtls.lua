@@ -20,6 +20,13 @@ return {
               "java.util.Objects.requireNonNullElse",
               "org.mockito.Mockito.*",
             },
+            filteredTypes = {
+              "com.sun.*",
+              "io.micrometer.shaded.*",
+              "java.awt.*",
+              "jdk.*",
+              "sun.*",
+            },
           },
           configuration = {
             runtimes = {
@@ -30,6 +37,10 @@ return {
               {
                 name = "JavaSE-17",
                 path = "~/.asdf/installs/java/openjdk-17.0.2",
+              },
+              {
+                name = "JavaSE-21",
+                path = "~/.asdf/installs/java/openjdk-21.0.2",
               },
             },
           },
@@ -51,9 +62,6 @@ return {
           },
           implementationsCodeLens = {
             enabled = true,
-          },
-          inlayHints = {
-            parameterNames = { enabled = "all" },
           },
           maven = {
             downloadSources = true,
