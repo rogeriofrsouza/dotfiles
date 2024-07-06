@@ -1,4 +1,2 @@
-dot_config/nvim/dot_repro
-dot_config/nvim/lazy-lock.json
-dot_config/nvim/lazyvim.json
+dot_config/nvim/*.json
 dot_config/tmux/plugins
