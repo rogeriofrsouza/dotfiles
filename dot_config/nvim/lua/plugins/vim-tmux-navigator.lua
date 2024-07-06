@@ -1,5 +1,6 @@
 return {
   "christoomey/vim-tmux-navigator",
+  lazy = false,
   keys = {
     { "<C-h>", "<cmd> TmuxNavigateLeft<CR>", "window left" },
     { "<C-j>", "<cmd> TmuxNavigateDown<CR>", "window down" },
