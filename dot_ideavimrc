@@ -151,6 +151,9 @@ let g:WhichKeyDesc_Explorer = "<leader>e Explorer"
 nmap <leader>/ <Action>(FindInPath)
 let g:WhichKeyDesc_Find_Path = "<leader>/ Find in Path"
 
+nmap <leader>D <Action>(ActivateDatabaseToolWindow)
+let g:WhichKeyDesc_Activate_d = "<leader>D Database"
+
 let g:WhichKeyDesc_Activate = "<leader>a Activate Tool Window"
 nmap <leader>aa <Action>(ActivateAIAssistantToolWindow)
 let g:WhichKeyDesc_Activate_a = "<leader>aa AI Assistant"
@@ -158,8 +161,6 @@ nmap <leader>as <Action>(ActivateServicesToolWindow)
 let g:WhichKeyDesc_Activate_s = "<leader>as Services"
 nmap <leader>at <Action>(ActivateStructureToolWindow)
 let g:WhichKeyDesc_Activate_t = "<leader>at Structure"
-nmap <leader>ad <Action>(ActivateDatabaseToolWindow)
-let g:WhichKeyDesc_Activate_d = "<leader>ad Database"
 nmap <leader>am <Action>(ActivateMavenToolWindow)
 let g:WhichKeyDesc_Activate_m = "<leader>am Maven"
 nmap <leader>ae <Action>(ActivateEndpointsToolWindow)
@@ -202,11 +203,9 @@ let g:WhichKeyDesc_Terminal_Run_tc = "<leader>tc Choose Run Configuration"
 let g:WhichKeyDesc_Ref = "<leader>r Refactorings"
 nmap <leader>rt <Action>(Refactorings.QuickListPopupAction)
 let g:WhichKeyDesc_Ref_t = "<leader>rt Refactor This"
-nmap <Leader>rn <Action>(RenameElement)
-let g:WhichKeyDesc_Ref_n = "<leader>rn Rename Element"
 
 let g:WhichKeyDesc_Code = "<leader>c Code"
-nmap <Leader>cf <Action>(ReformatCode)
+nmap <leader>cf <Action>(ReformatCode)
 let g:WhichKeyDesc_Code_f = "<leader>cf Reformat Code"
 nmap <leader>ca <Action>(ShowIntentionActions)
 let g:WhichKeyDesc_Code_a = "<leader>ca Intention Actions"
@@ -216,14 +215,18 @@ nmap <leader>cg <Action>(Generate)
 let g:WhichKeyDesc_Code_g = "<leader>cg Generate"
 nmap <leader>cc <Action>(AIAssistant.Editor.CompleteCodeWithAI)
 let g:WhichKeyDesc_Code_cc = "<leader>cc Complete Code With AI"
+nmap <leader>cr <Action>(RenameElement)
+let g:WhichKeyDesc_Code_cr = "<leader>cr Rename Element"
+nmap <leader>cs <Action>(FileStructurePopup)
+let g:WhichKeyDesc_Code_s = "<leader>cs File Structure"
 
 let g:WhichKeyDesc_Find = "<leader>f Find and Replace"
 nmap <leader>fr <Action>(Replace)
 let g:WhichKeyDesc_Find_rep = "<leader>fr Replace"
 nmap <leader>ff <Action>(SearchEverywhere)
 let g:WhichKeyDesc_Find_search = "<leader>ff Search Everywhere"
-nmap <leader>ft <Action>(ActivateTerminalToolWindow)
-let g:WhichKeyDesc_Find_terminal = "<leader>ft Open Terminal"
+nmap <C-/> <Action>(ActivateTerminalToolWindow)
+let g:WhichKeyDesc_Find_terminal = "C-/ Open Terminal"
 
 let g:WhichKeyDesc_vim = "<leader>v VIM"
 nmap <leader>vr <Action>(IdeaVim.ReloadVimRc.reload)
@@ -236,8 +239,6 @@ nmap <leader>su <Action>(FindUsages)
 let g:WhichKeyDesc_Show_us = "<leader>su Show Usages"
 nmap <leader>sl <Action>(RecentLocations)
 let g:WhichKeyDesc_Show_lo = "<leader>sl Recent Locations"
-nmap <leader>ss <Action>(FileStructurePopup)
-let g:WhichKeyDesc_Show_struct = "<leader>ss File Structure"
 nmap <leader>sd <Action>(QuickJavaDoc)
 let g:WhichKeyDesc_Show_doc = "<leader>sd Documentation"
 nmap <leader>se <Action>(ShowErrorDescription)
