@@ -19,6 +19,7 @@ return {
               "java.util.Objects.requireNonNull",
               "java.util.Objects.requireNonNullElse",
               "org.mockito.Mockito.*",
+              "org.mockito.ArgumentMatchers.*;",
             },
             filteredTypes = {
               "com.sun.*",
