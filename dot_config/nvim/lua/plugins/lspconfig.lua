@@ -23,7 +23,7 @@ return {
               xml = {
                 format = {
                   enabled = true,
-                  splitAttributes = "alignWithFirstAttr",
+                  -- splitAttributes = "alignWithFirstAttr",
                   joinContentLines = true,
                   preservedNewlines = 1,
                   insertSpaces = true,
