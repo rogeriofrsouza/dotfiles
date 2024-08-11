@@ -55,7 +55,7 @@ return {
             enabled = true,
           },
           format = {
-            enabled = false,
+            enabled = true,
             -- settings = {
             --   url = vim.fn.expand("~/Workspace/eclipse-java-google-style.xml"),
             --   profile = "GoogleStyle",
@@ -73,6 +73,9 @@ return {
           referenceCodeLens = {
             enabled = true,
           },
+          settings = {
+            url = vim.fn.expand("~/org.eclipse.jdt.core.formatter.prefs"),
+          },
           signatureHelp = { enabled = true },
           sources = {
             organizeImports = {
@@ -89,7 +92,7 @@ return {
       -- }
 
       local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
-      extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+      -- extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
       opts.init_options.extendedClientCapabilities = extendedClientCapabilities
 
       opts.capabilities.textDocument.foldingRange = {

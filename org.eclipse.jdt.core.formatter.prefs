@@ -1,0 +1,3 @@
+org.eclipse.jdt.core.formatter.lineSplit=100
+org.eclipse.jdt.core.formatter.comment.line_length=100
+org.eclipse.jdt.core.formatter.alignment_for_assignment=16
