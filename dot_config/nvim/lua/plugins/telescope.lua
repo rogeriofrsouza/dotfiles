@@ -7,6 +7,9 @@ return {
           collapse_dirs = true,
         },
       },
+      defaults = {
+        path_display = { "filename_first", "truncate" },
+      },
     },
     keys = {
       { "<leader>fb", false },

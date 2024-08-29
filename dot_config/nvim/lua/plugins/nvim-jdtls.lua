@@ -33,15 +33,15 @@ return {
             runtimes = {
               {
                 name = "JavaSE-11",
-                path = "~/.asdf/installs/java/openjdk-11.0.2",
+                path = vim.fn.expand("~/.asdf/installs/java/openjdk-11.0.2"),
               },
               {
                 name = "JavaSE-17",
-                path = "~/.asdf/installs/java/openjdk-17.0.2",
+                path = vim.fn.expand("~/.asdf/installs/java/openjdk-17.0.2"),
               },
               {
                 name = "JavaSE-21",
-                path = "~/.asdf/installs/java/openjdk-21.0.2",
+                path = vim.fn.expand("~/.asdf/installs/java/openjdk-21.0.2"),
               },
             },
           },
@@ -73,8 +73,11 @@ return {
           referenceCodeLens = {
             enabled = true,
           },
+          -- saveActions = {
+          --   organizeImports = true,
+          -- },
           settings = {
-            url = vim.fn.expand("~/org.eclipse.jdt.core.formatter.prefs"),
+            url = vim.fn.expand("~/jdt-formatter.prefs"),
           },
           signatureHelp = { enabled = true },
           sources = {
@@ -92,7 +95,7 @@ return {
       -- }
 
       local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
-      -- extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+      extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
       opts.init_options.extendedClientCapabilities = extendedClientCapabilities
 
       opts.capabilities.textDocument.foldingRange = {
