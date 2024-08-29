@@ -1,0 +1,36 @@
+[sqlfluff]
+dialect = mariadb
+
+[sqlfluff:indentation]
+indented_joins = True
+allow_implicit_indents = True
+
+[sqlfluff:layout:type:select_clause]
+line_position = alone:strict
+
+[sqlfluff:layout:type:where_clause]
+line_position = alone:strict
+
+[sqlfluff:layout:type:from_clause]
+line_position = alone:strict
+
+[sqlfluff:layout:type:join_clause]
+line_position = alone:strict
+
+[sqlfluff:layout:type:groupby_clause]
+line_position = alone:strict
+
+[sqlfluff:layout:type:having_clause]
+line_position = alone:strict
+
+[sqlfluff:layout:type:limit_clause]
+line_position = alone:strict
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.functions]
+extended_capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.types]
+extended_capitalisation_policy = upper
