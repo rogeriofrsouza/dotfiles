@@ -4,5 +4,8 @@ return {
     filesystem = {
       group_empty_dirs = true,
     },
+    window = {
+      width = 32,
+    },
   },
 }
