@@ -9,6 +9,7 @@
 vim.filetype.add({
   extension = {
     ["http"] = "http",
+    ["sqlfluff"] = "cfg",
   },
 })
 
