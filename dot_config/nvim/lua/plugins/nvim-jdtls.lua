@@ -53,6 +53,8 @@ return {
           },
           foldingRange = {
             enabled = true,
+            -- dynamicRegistration = false,
+            -- lineFoldingOnly = true,
           },
           format = {
             enabled = true,
@@ -73,9 +75,9 @@ return {
           referenceCodeLens = {
             enabled = true,
           },
-          -- saveActions = {
-          --   organizeImports = true,
-          -- },
+          saveActions = {
+            organizeImports = true,
+          },
           settings = {
             url = vim.fn.expand("~/jdt-formatter.prefs"),
           },
@@ -98,12 +100,12 @@ return {
       extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
       opts.init_options.extendedClientCapabilities = extendedClientCapabilities
 
-      opts.capabilities.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true,
-      }
+      -- opts.capabilities.textDocument.foldingRange = {
+      --   dynamicRegistration = false,
+      --   lineFoldingOnly = true,
+      -- }
 
-      require("ufo").setup()
+      -- require("ufo").setup()
 
       return opts
     end,
