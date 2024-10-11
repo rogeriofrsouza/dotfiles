@@ -1,5 +1,6 @@
 [sqlfluff]
-dialect = mariadb
+dialect = mysql
+max_line_length = 100
 
 [sqlfluff:indentation]
 indented_joins = True
