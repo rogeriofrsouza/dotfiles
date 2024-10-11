@@ -1,5 +1,40 @@
 [user]
-	email = rogeriofrsouza@gmail.com
-	name = Rogério Ferreira de Souza
+    email = rogeriofrsouza@gmail.com
+    name = Rogério Ferreira de Souza
+
 [core]
-	autocrlf = input
+    autocrlf = input
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    features = neovim
+
+[delta "neovim"]
+    dark = true
+    side-by-side = false
+    syntax-theme = Dracula
+    keep-plus-minus-markers = true
+    hyperlinks = true
+    zero-style = syntax
+
+    # Base: #5d001e
+    minus-style = syntax "#401c27"
+
+    # Base: #b80000
+    minus-emph-style = syntax bold "#932525"
+
+    # Base: 004433
+    plus-style = syntax "#142e28"
+
+    # Base: #007800
+    plus-emph-style = syntax bold "#186218"
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
