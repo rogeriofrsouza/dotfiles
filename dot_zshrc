@@ -1,20 +1,20 @@
-# Set the directory we want to store zinit and plugins
+# Zinit manual install
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-
-# Download Zinit, if it's not there yet
-if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
-   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-fi
-
-# Source/Load zinit
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add Neovim and languages to PATH
 export PATH="$PATH:/opt/nvim-linux64/bin"
-export JAVA_HOME=~/.asdf/installs/java/openjdk-17.0.2
+export JAVA_HOME=~/.asdf/installs/java/temurin-21.0.5+11.0.LTS
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$PATH:/opt/fzf"
+
+# Install asdf
+. "$HOME/.asdf/asdf.sh"
+
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
 
 # Load starship theme
 # line 1: `starship` binary as command, from github release
@@ -25,14 +25,11 @@ zinit ice as"command" from"gh-r" \
           atpull"%atclone" src"init.zsh"
 zinit light starship/starship
 
-# Install asdf
-. "$HOME/.asdf/asdf.sh"
-
 # Add in zsh plugins
+zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-# zinit light Aloxaf/fzf-tab
 
 # Add in snippets
 # zinit snippet OMZP::git
@@ -42,9 +39,6 @@ zinit light zsh-users/zsh-autosuggestions
 # zinit snippet OMZP::kubectl
 # zinit snippet OMZP::kubectx
 # zinit snippet OMZP::command-not-found
-
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -73,14 +67,15 @@ setopt hist_find_no_dups
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-# zstyle ':completion:*' menu no
-# zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-# zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
-alias ls='ls --color'
 alias vim='nvim'
-alias eza='eza --icons -la'
+alias ll='eza --icons -la'
+alias cat='bat'
+alias c='clear'
 
 alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 alias nvim-astro='NVIM_APPNAME="nvim-astro" nvim'
@@ -90,7 +85,7 @@ alias nvim-lazy-repro='NVIM_APPNAME="nvim-lazy-repro" nvim'
 # Shell integrations
 eval "$(starship init zsh)"
 source <(fzf --zsh)
-# eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
