@@ -11,7 +11,8 @@ config.font = wezterm.font_with_fallback({
 
 config.enable_tab_bar = false
 
-config.color_scheme = "Tokyo Night Moon"
+-- config.color_scheme = "Tokyo Night Moon"
+config.color_scheme = "Idle Toes (Gogh)"
 
 config.window_padding = {
 	top = 4,
