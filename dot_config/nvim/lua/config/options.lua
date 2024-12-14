@@ -13,4 +13,7 @@ vim.filetype.add({
   },
 })
 
-vim.g.lazyvim_picker = "telescope"
+-- vim.g.lazyvim_picker = "telescope"
+
+-- Avante: views can only be fully collapsed with the global statusline
+-- vim.opt.laststatus = 3

@@ -1,6 +1,7 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
+    disabled = true,
     opts = {
       extensions = {
         file_browser = {

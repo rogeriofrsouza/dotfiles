@@ -1,6 +1,7 @@
 return {
   {
     "nvim-telescope/telescope-file-browser.nvim",
+    disabled = true,
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
     keys = {
       {
