@@ -1,55 +1,21 @@
-# Zinit manual install
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
-
-# Add Neovim and languages to PATH
-export PATH="$PATH:/opt/nvim-linux64/bin"
-export JAVA_HOME=~/.asdf/installs/java/temurin-21.0.5+11.0.LTS
+# Add stuff to PATH
 export PATH=$PATH:/usr/local/go/bin
-export PATH="$PATH:/opt/fzf"
+export PATH="$PATH:/opt/nvim-linux64/bin"
+export HOMEBREW_NO_ANALYTICS=1
 
-# Install asdf
-. "$HOME/.asdf/asdf.sh"
+# Antidote
+source ~/.antidote/antidote.zsh
+antidote load ${ZDOTDIR:-$HOME}/.zsh_plugins.txt
 
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Load starship theme
-# line 1: `starship` binary as command, from github release
-# line 2: starship setup at clone(create init.zsh, completion)
-# line 3: pull behavior same as clone, source init.zsh
-zinit ice as"command" from"gh-r" \
-          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-          atpull"%atclone" src"init.zsh"
-zinit light starship/starship
+# asdf
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 
-# Add in zsh plugins
-zinit light Aloxaf/fzf-tab
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-
-# Add in snippets
-# zinit snippet OMZP::git
-# zinit snippet OMZP::sudo
-# zinit snippet OMZP::archlinux
-# zinit snippet OMZP::aws
-# zinit snippet OMZP::kubectl
-# zinit snippet OMZP::kubectx
-# zinit snippet OMZP::command-not-found
-
-# Load completions
+# initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
-
-zinit cdreplay -q
-
-# Keybindings
-# bindkey -e
-# bindkey '^p' history-search-backward
-# bindkey '^n' history-search-forward
-# bindkey '^[w' kill-region
 
 # History
 HISTSIZE=5000
@@ -66,27 +32,23 @@ setopt hist_find_no_dups
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 
 # Aliases
 alias vim='nvim'
 alias ll='eza --icons -la'
-alias cat='bat'
-alias c='clear'
 
 alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
 alias nvim-astro='NVIM_APPNAME="nvim-astro" nvim'
-alias astronvim="NVIM_APPNAME=astronvim nvim"
-alias nvim-lazy-repro='NVIM_APPNAME="nvim-lazy-repro" nvim'
 
 # Shell integrations
 eval "$(starship init zsh)"
 source <(fzf --zsh)
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
