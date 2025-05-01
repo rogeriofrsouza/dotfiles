@@ -76,6 +76,8 @@ nmap gd <Action>(GotoDeclaration)
 let g:WhichKeyDesc_decl = "gd"
 nmap gD <Action>(GotoTypeDeclaration)
 let g:WhichKeyDesc_tdecla = "gD"
+nmap gi <Action>(GotoImplementation)
+let g:WhichKeyDesc_decl = "gi"
 nmap gr <Action>(FindUsages)
 let g:WhichKeyDesc_find_usages = "gr"
 nmap gb <Action>(Back)
@@ -153,6 +155,8 @@ nmap <leader>as <Action>(ActivateServicesToolWindow)
 let g:WhichKeyDesc_Activate_s = "<leader>as Services"
 nmap <leader>at <Action>(ActivateStructureToolWindow)
 let g:WhichKeyDesc_Activate_t = "<leader>at Structure"
+nmap <leader>ag <Action>(ActivateGradleToolWindow)
+let g:WhichKeyDesc_Activate_g = "<leader>ag Gradle"
 nmap <leader>am <Action>(ActivateMavenToolWindow)
 let g:WhichKeyDesc_Activate_m = "<leader>am Maven"
 nmap <leader>ae <Action>(ActivateEndpointsToolWindow)
@@ -183,10 +187,8 @@ let g:WhichKeyDesc_Window_Hide = "<leader>wc Hide All Windows"
 let g:WhichKeyDesc_Terminal_Run = "<leader>t Terminal and Run"
 nmap <leader>to <Action>(Terminal.OpenInTerminal)
 let g:WhichKeyDesc_Terminal_Run_to = "<leader>to Open New Terminal in Path"
-nmap <leader>ts <Action>(RunClass)
-let g:WhichKeyDesc_Terminal_Run_ts = "<leader>ts Run Class"
-nmap <leader>tr <Action>(RunClass)
-let g:WhichKeyDesc_Terminal_Run_tr = "<leader>tr Run Tests"
+nmap <leader>tt <Action>(RunClass)
+let g:WhichKeyDesc_Terminal_Run_tt = "<leader>tr Run Tests"
 nmap <leader>tf <Action>(RerunFailedTests)
 let g:WhichKeyDesc_Terminal_Run_tf = "<leader>tf Run Failed Tests"
 nmap <leader>tc <Action>(ChooseRunConfiguration)
@@ -212,9 +214,9 @@ let g:WhichKeyDesc_Code_cr = "<leader>cr Rename Element"
 nmap <leader>cs <Action>(FileStructurePopup)
 let g:WhichKeyDesc_Code_s = "<leader>cs File Structure"
 
-let g:WhichKeyDesc_Find = "<leader>f Find and Replace"
-nmap <leader>fr <Action>(Replace)
-let g:WhichKeyDesc_Find_rep = "<leader>fr Replace"
+let g:WhichKeyDesc_Find = "<leader>f File/Find"
+nmap <leader>fr <Action>(RecentFiles)
+let g:WhichKeyDesc_Find_recent = "<leader>fr Recent Files"
 nmap <leader>ff <Action>(SearchEverywhere)
 let g:WhichKeyDesc_Find_search = "<leader>ff Search Everywhere"
 
@@ -235,8 +237,8 @@ nmap <leader>se <Action>(ShowErrorDescription)
 let g:WhichKeyDesc_Show_er = "<leader>se Error Description"
 nmap <leader>sa <Action>(GotoAction)
 let g:WhichKeyDesc_Show_ac = "<leader>sa Actions"
-nmap <leader>sf <Action>(RecentFiles)
-let g:WhichKeyDesc_Show_fi = "<leader>sf Recent Files"
+nmap <leader>sr <Action>(Replace)
+let g:WhichKeyDesc_Show_rep = "<leader>sr Replace"
 nmap <leader>sc <Action>(RecentChangedFiles)
 let g:WhichKeyDesc_Show_sc = "<leader>sc Recent Changed Files"
 
