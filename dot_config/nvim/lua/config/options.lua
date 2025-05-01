@@ -14,6 +14,12 @@ vim.filetype.add({
 })
 
 -- vim.g.lazyvim_picker = "telescope"
+vim.g.lazyvim_picker = "snacks"
 
 -- Avante: views can only be fully collapsed with the global statusline
 -- vim.opt.laststatus = 3
+
+-- LSP Server to use for Ruby.
+-- Set to "solargraph" to use solargraph instead of ruby_lsp.
+vim.g.lazyvim_ruby_lsp = "ruby_lsp"
+vim.g.lazyvim_ruby_formatter = "rubocop"
