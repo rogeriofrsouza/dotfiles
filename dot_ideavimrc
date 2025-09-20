@@ -25,7 +25,8 @@ set noideadelaymacro
 set idearefactormode=keep
 
 """ Mappings --------------------------------
-nmap <Esc> :nohlsearch<CR>
+" nnoremap <leader><Esc> :noh<CR>
+nnoremap <Esc> :noh<CR><Esc>
 nmap <C-s> :w<CR><Esc>
 nmap <C-/> <Action>(ActivateTerminalToolWindow)
 let g:WhichKeyDesc_Find_terminal = "C-/ Open Terminal"
@@ -167,8 +168,8 @@ nmap <leader>au <Action>(MainMenuButton.ShowMenu)
 let g:WhichKeyDesc_Activate_u = "<leader>au Main Menu"
 
 let g:WhichKeyDesc_Window = "<leader>w Manage Windows"
-nmap <leader>ws <Action>(SplitVertically)
-let g:WhichKeyDesc_Window_Split = "<leader>ws Split Vertically"
+nmap <leader>wv <Action>(SplitVertically)
+let g:WhichKeyDesc_Window_Split = "<leader>wv Split Vertically"
 nmap <leader>wu <Action>(Unsplit)
 let g:WhichKeyDesc_Window_Unsplit = "<leader>wu Unsplit"
 nmap <leader>wq <Action>(CloseContent)
