@@ -1,6 +1,8 @@
 # Add stuff to PATH
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+# export PATH="$PATH:/opt/zellij"
+export PATH=/home/rogeriofrsouza/.opencode/bin:$PATH
 
 # Antidote
 source ~/.antidote/antidote.zsh
@@ -34,14 +36,14 @@ setopt hist_find_no_dups
 # Aliases
 alias vim='nvim'
 alias ll='eza --icons -la'
-alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
-alias nvim-astro='NVIM_APPNAME="nvim-astro" nvim'
+alias bat="batcat"
 
 # Shell integrations
 eval "$(starship init zsh)"
 source <(fzf --zsh)
 eval "$(zoxide init zsh)"
-eval "$(mise activate zsh)"
+eval "$(~/.local/bin/mise activate zsh)"
+# eval "$(zellij setup --generate-auto-start zsh)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
