@@ -6,6 +6,8 @@ return {
       vim.list_extend(opts.ensure_installed, {
         "sonarlint-language-server",
         -- "google-java-format",
+        "tailwindcss-language-server",
+        "html-lsp",
       })
     end,
   },
